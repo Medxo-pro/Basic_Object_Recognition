@@ -38,13 +38,17 @@ np.random.seed(543210)
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 net = cv2.dnn.readNetFromCaffe(prototxt_path, model_path)
 
-# Ask a question
+# Process method:
 question = "Upload image (I) or use camera (C)? "
 
-# Get the user's response
+# User's response
 response = input(question)
 
 if response == 'I':
+    question = "Write out the file name you seek to process in the imgs directory: "
+    response = input(question)
+    image_path = 'imgs/'+response+'.jpg'
+
     if not os.path.exists(image_path):
         print(f"Image path '{image_path}' does not exist.")
     else:
